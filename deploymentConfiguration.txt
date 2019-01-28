@@ -1,0 +1,1 @@
+truffle migrate --compile-all --reset --network remote_network_name

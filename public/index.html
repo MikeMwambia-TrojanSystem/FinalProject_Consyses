@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Article Signing Application</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li>Introduction</li>
+							<li>Add Article</li>
+							<li>Sign Article</li>
+							<li>Add Signatories</li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>Welcome</h1>
+							<p>This is a Dapp designed to show the capabilities of signing a document on block chain using Ethereum Address and different signatories.
+								The smart contract powering this Dapp is hosted in test network at address
+								<a target="_blank" href="https://ropsten.etherscan.io/address/0x492de0978e159d8490964022b98f0eba6765a878">
+									0x492De0978E159D8490964022B98F0eBa6765A878.</a><br/>
+							Enter your email below to start adding documents and signing existing ones.<p>
+								<section>
+								<div style="float:left;width:50%">
+										<div class="fields">
+											<div class="field half" id="emailInput">
+												<label for="email">Email</label>
+												<input type="text" name="name" id="docOwner"/>
+												<label for="text" id="docOwnerAddress"></label>
+											</div>
+											<div class="field half">
+												<label for="email" id="emailAddress">Address Generated.</label>
+											</div>
+										</div>
+								<ul class="actions">
+								<li><button class="button submit" onclick="frontLogic.signUpUser()">Sign Up</button></li>
+								</ul>
+								</div>
+							</section>
+						</div>
+					</section>
+				<!-- One -->
+				<section id="one" class="wrapper style1 fade-up">
+					<div class="inner">
+						<h2>Add Document Section.</h2>
+						<p>Your Ethereum address is <span id="etheAddress"></span> and email address is <span id="emailAddress3"></span></br>
+						<span id="notify">
+						Add upto 10 signatories on the document.Your email and ethereum address are automatically
+							assigned as the owner of the document.</span>
+							</p>
+						<div class="split style1">
+							<section>
+								<div style="float:left;width:75%">
+									<div class="fields">
+										<div class="field half">
+											<label for="email" id="emailAddress1">1st Signatory Email Address</label>
+											<input type="text" name="signatory1" id="signatory1"/>
+											<label for="text" id="signatory1Address"></label>
+										</div>
+										<div class="field half">
+											<label for="email" id="emailAddress2">2nd Signatory Email Address</label>
+											<input type="text" name="signatory2" id="signatory2"/>
+											<label for="text" id="signatory2Address"></label>
+										</div>
+										<div class="field half">
+											<label for="email" id="emailAddress3">3rd Signatory Email Address</label>
+											<input type="text" name="signatory3" id="signatory3"/>
+											<label for="text" id="signatory3Address"></label>
+										</div>
+										<div class="field half">
+											<label for="email" id="emailAddress4">4th Signatory Email Address</label>
+											<input type="text" name="signatory4" id="signatory4"/>
+											<label for="text" id="signatory4Address"></label>
+										</div>
+										<div class="field half">
+											<label for="email" id="emailAddress5">5th Signatory Email Address</label>
+											<input type="text" name="signatory5" id="signatory5"/>
+											<label for="text" id="signatory5Address"></label>
+										</div>
+										<div class="field half">
+											<label for="email" id="emailAddress6">6th Signatory Email Address</label>
+											<input type="text" name="signatory6" id="signatory6"/>
+											<label for="text" id="signatory6Address"></label>
+										</div>
+										<div class="field half">
+											<label for="email" id="emailAddress7">7th Signatory Email Address</label>
+											<input type="text" name="signatory7" id="signatory7"/>
+											<label for="text" id="signatory7Address"></label>
+										</div>
+										<div class="field half">
+											<label for="email" id="emailAddress8">8th Signatory Email Address</label>
+											<input type="text" name="signatory8" id="signatory8"/>
+											<label for="text" id="signatory8Address"></label>
+										</div>
+										<div class="field half">
+											<label for="email" id="emailAddress9">9th Signatory Email Address</label>
+											<input type="text" name="signatory9" id="signatory9"/>
+											<label for="text" id="signatory9Address"></label>
+										</div>
+										<div class="field half">
+											<label for="email" id="emailAddress10">10th Signatory Address(Reserved for Owner)</label>
+											<input type="text" name="signatory10" id="signatory10"/>
+											<label for="text" id="signatory10Address"></label>
+										</div>
+									</div>
+									<ul class="actions" id="generateAddress">
+										<li>
+										<button class="button submit" onclick="frontLogic.checkSignatories()">Generate Address</button>
+										</li>
+									</ul>
+									<ul class="actions" id="AddSignatories">
+										<li>
+										<button class="button submit" onclick="frontLogic.addAddressessToDoc()">Next</button>
+										</li>
+									</ul>
+								</div>
+							</section>
+						</div>
+					</div>
+				</section>
+				<!-- Two -->
+					<section id="two" class="wrapper style3 fade-up">
+						<div class="inner">
+							<p>The content of your article can be found below for you to add signatories.</p>
+							<h2 id="title">Article Title.</h2>
+							<div class="features">
+								<span id="content">This is the content area.</span>
+							</div>
+							<ul class="actions">
+								<li>The article title hash is <span id="documentTitleHash"></span></li><br>
+								<li>The article content hash is <span id="documentContentHash"></span></li>
+							</ul>
+						</div>
+						<div class="inner">
+							<ul class="actions">
+								<li>
+									<button class="button" onclick="frontLogic.addSignatoriesToDoc()">Next</button>
+								</li>
+							</ul>
+						</div>
+					</section>
+
+			<!-- Three -->
+				<section id="three" class="wrapper style1 fade-up">
+					<div class="inner">
+						<h2>Write a document to be signed below upto 300 words.</h2>
+						<p>After completion click add article to save it and add signatories.</p>
+						<div class="split style1">
+							<section>
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Title</label>
+											<input type="text" name="name" id="name"/>
+										</div>
+										<br>
+										<div class="field half">
+											<label for="email">Email</label>
+											<label for="text" id="emailAddress1"></label>
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="5"></textarea>
+										</div>
+									</div>
+									<br>
+									<ul class="actions">
+										<li><button class="button" onclick="frontLogic.addArticle()">Send Message</button></li>
+									</ul>
+							</section>
+						</div>
+					</div>
+				</section>
+
+				<!-- Four -->
+					<section id="four" class="wrapper style3 fade-up" style="display:none">
+						<div class="inner">
+							<p>The document with tite hash <span id='documentTitleHash1'></span>,and content hash <span id='documentContentHash1'></span>
+							,was success fully save on the smart contract storage address <span id='smartcontractAddress'></span></p>
+							<p>The transaction hash is <span id='transactionhash'></span></p>
+							<p>You can verify by running the verify function and pass the owner address <span id="ownerAddress"></span> as a parameter.</p>
+						</div>
+					</section>
+
+					</div>
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Mike Adams.</li><li>Design: Mike Adams</li>
+					</ul>
+				</div>
+			</footer>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/web3.min.js"></script>
+			<script src="assets/js/truffle-contract.js"></script>
+			<script src="assets/js/frontLogic.js"></script>
+	</body>
+</html>
