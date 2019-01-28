@@ -12,8 +12,10 @@ The end goals of this is to improve it and have a plugin or email tool for SMEs 
 The complete implementation demostrated here is the one for uploading the document to the smart contract and generating ethereum addresses.
 
 For the truffle part 
+on project folder run: truffle compile
 
 on project folder run: truffle migrate --reset --all
+
 on project folder run: truffle test
 
 download project source code.
