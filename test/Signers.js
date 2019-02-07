@@ -9,8 +9,10 @@ contract('Signers',(accounts)=>{
     Signers.deployed().then(function(instance){
     return instance.addDoc(docHash,5);
   }).then(function(){
+    Signers.deployed().then(function(instance){
     var docHashReturn = instance.verifyDoc(docOwner);
     assert.equal(docHashReturn,docHash,"They are equal");
+    })
   });
 });
 
@@ -19,8 +21,10 @@ it('Should add signatory address',function(){
   Signers.deployed().then(function(instance){
     return instance.addSigner(signatoryAddress,docHash,docOwner);
   }).then(function(){
+    Signers.deployed().then(function(instance){
     var signatory = instance.signStructs[signatoryAddress];
     assert.equal(docOwner,signatory.docOwnerAddress,"They are same address");
+    })
   })
 });
 
@@ -29,21 +33,27 @@ it('Should add signatory address',function(){
    Signers.deployed().then(function(instance){
      return instance.addSigner(signatoryAddress,docHash,docOwner);
   }).then(function(instance){
-     instance.removeApproval();
+    Signers.deployed().then(function(instance){
+    instance.removeApproval();
+    })
   }).then(function(){
+    Signers.deployed().then(function(instance){
     var valueSignatory = instance.docs[docOwner];
     assert.equal(valueSignatory.needApproval,false,"Approval flag removed");
-    })
+    });
+    });
  });
 
 //This test whether the document is signed by checking the flag of the signatory.
  it('Should Sign document',function(){
    Signers.deployed().then(function(instance){
      return instance.sign(docOwner);
-   }).then(function(instance){
-     var signed = instance.signStructs[docOwner].signed
-     assert.equal(signed,true,"Document is signed");
-   })
+   }).then(function(){
+    Signers.deployed().then(function(instance){
+    var signed = instance.signStructs[docOwner].signed
+    assert.equal(signed,true,"Document is signed");
+    });
+    });
  });
 
 //This changes the ownership of the contract to the address of the signatory.
@@ -51,8 +61,9 @@ it('Should add signatory address',function(){
    Signers.deployed().then(function(instance){
      return instance.changeOwnership(signatoryAddress,docOwner);
    }).then(function(){
+    Signers.deployed().then(function(instance){
      assert.equal(docs[signatoryAddress].docOwnerAddress,signatoryAddress,"Owner Changed to Singatory");
+    });
    })
  });
-
 });
